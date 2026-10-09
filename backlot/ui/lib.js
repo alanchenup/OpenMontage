@@ -1,5 +1,7 @@
 // Shared helpers for the Backlot UI.
 
+import { t } from "/ui/i18n.js";
+
 export async function getJSON(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`${res.status} ${url}`);
@@ -38,10 +40,10 @@ export function fmtMoney(v) {
 export function fmtAgo(epochSeconds) {
   if (!epochSeconds) return "";
   const diff = Date.now() / 1000 - epochSeconds;
-  if (diff < 90) return "just now";
-  if (diff < 3600) return `${Math.round(diff / 60)}m ago`;
-  if (diff < 86400) return `${Math.round(diff / 3600)}h ago`;
-  return `${Math.round(diff / 86400)}d ago`;
+  if (diff < 90) return t("just_now");
+  if (diff < 3600) return t("minutes_ago", { n: Math.round(diff / 60) });
+  if (diff < 86400) return t("hours_ago", { n: Math.round(diff / 3600) });
+  return t("days_ago", { n: Math.round(diff / 86400) });
 }
 
 export function fmtClock(iso) {

@@ -217,6 +217,31 @@ aside .panel:nth-of-type(1) { animation-delay: .32s } aside .panel:nth-of-type(2
 .theme-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .theme-toggle-icon { font-size: calc(15px * var(--fs-scale)); line-height: 1; transform: translateY(-.5px); }
 
+.lang-toggle {
+  height: 34px;
+  min-width: 34px;
+  padding: 0 10px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  background: var(--surface-2);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: calc(12px * var(--fs-scale));
+  letter-spacing: 0.04em;
+  transition: transform .16s ease, border-color .16s ease, color .16s ease;
+}
+.lang-toggle:hover {
+  color: var(--amber);
+  border-color: rgba(240,168,60,.42);
+  transform: translateY(-1px);
+}
+.lang-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
 :root[data-theme="light"] .theme-toggle {
   background:
     radial-gradient(circle at 35% 24%, rgba(255,255,255,.9), transparent 42%),
@@ -1039,4 +1064,42 @@ body:not(.first) .approval-review { animation: none; }
   .approval-review-foot { align-items: flex-start; flex-direction: column; }
   .approval-review-foot button { width: 100%; }
   .approval-status { white-space: normal; }
+}
+
+/* Chinese chrome: CJK needs a sans/serif face and tighter tracking than the mono labels. */
+html[lang="zh-CN"] {
+  --sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
+  --screenplay: "Noto Serif SC", "Songti SC", "SimSun", "Noto Sans SC", "WenQuanYi Micro Hei", serif;
+}
+html[lang="zh-CN"] .slate h1,
+html[lang="zh-CN"] .section-title,
+html[lang="zh-CN"] .panel-head h2,
+html[lang="zh-CN"] .live,
+html[lang="zh-CN"] .chip,
+html[lang="zh-CN"] .cost .label,
+html[lang="zh-CN"] .script-status,
+html[lang="zh-CN"] .script-card .sp-meta,
+html[lang="zh-CN"] .script-card .sp-expand,
+html[lang="zh-CN"] .script-card .sp-fade,
+html[lang="zh-CN"] .approval-eyebrow,
+html[lang="zh-CN"] .approval-status,
+html[lang="zh-CN"] .approval-artifact-kicker,
+html[lang="zh-CN"] .approval-selected,
+html[lang="zh-CN"] .approval-rationale b,
+html[lang="zh-CN"] .approval-review-note b,
+html[lang="zh-CN"] .approval-review-foot,
+html[lang="zh-CN"] .approval-fact span,
+html[lang="zh-CN"] .empty .big,
+html[lang="zh-CN"] .drawer .drawer-head h3,
+html[lang="zh-CN"] .lib-poster .lp-txt,
+html[lang="zh-CN"] .lib-body h3,
+html[lang="zh-CN"] .stage .name,
+html[lang="zh-CN"] .stage .sub,
+html[lang="zh-CN"] .hint,
+html[lang="zh-CN"] .notice,
+html[lang="zh-CN"] .replay-bar .rp-btn,
+html[lang="zh-CN"] .replay-bar .rp-time {
+  font-family: var(--sans);
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
