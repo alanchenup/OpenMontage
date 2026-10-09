@@ -7,6 +7,13 @@ Pillow>=10.0
 numpy>=1.24
 requests>=2.31
 google-auth>=2.0       # service-account auth for Google TTS + Imagen (Vertex AI)
+# cryptography 49+ publishes macOS arm64 wheels only. Intel Macs then build
+# the sdist and fail unless Rust has the x86_64-apple-darwin target.
+# 48.x still ships a universal2 wheel (cp39-abi3) that covers Python 3.10+.
+# 中文：cryptography 49 及以上只提供 Apple Silicon（arm64）的 macOS 轮子。
+# Intel Mac 会退回源码编译；若 Rust 没有 x86_64-apple-darwin target，就会报
+# can't find crate for core。48.x 仍有 universal2 轮子，可覆盖 Python 3.10+。
+cryptography>=38.0.3,<49
 google-genai>=1.0.0    # Gemini Developer API clients for Lyria, Veo, and Gemini Omni
 openai>=2.44.0         # Videos API support for Sora 2
 
