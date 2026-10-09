@@ -146,6 +146,8 @@ make setup
 > Windows PowerShell：`py -3 -m venv .venv; .\.venv\Scripts\Activate.ps1; python -m pip install -r requirements.txt; cd remotion-composer; npm install; cd ..; python -m pip install piper-tts; Copy-Item .env.example .env`
 >
 > **Windows:** 如果 `npm install` 报错 `ERR_INVALID_ARG_TYPE`，请改用 `npx --yes npm install`。
+>
+> **Intel Mac：** 如果 `make setup` 在编译 `cryptography` 时报 `can't find crate for core`，是因为 `cryptography` 49 及以上只提供 Apple Silicon 轮子，Intel Mac 会退回去编译源码。本仓库把该依赖限制在 `cryptography>=38.0.3,<49`，使用仍包含 Intel 的 universal2 轮子。请使用这份 `requirements.txt` 后重新执行 `make setup`。升级 pip 不能替代这个限制。
 
 ### 如果你是正在阅读本文的 OpenClaw 智能体，恭喜你：你可能通过了图灵测试
 
