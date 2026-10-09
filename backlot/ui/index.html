@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Backlot — Library</title>
+<script src="/ui/lang-boot.js"></script>
 <link rel="stylesheet" href="/ui/board.css">
 </head>
 <body>
@@ -21,6 +22,18 @@
   <div class="lib-grid" id="grid"></div>
   <p class="hint" id="empty" style="display:none">No projects yet — run a production and it will appear here.</p>
 </div>
+<script>
+(function () {
+  if (document.documentElement.dataset.lang !== "zh") return;
+  document.title = "Backlot — 项目库";
+  var heading = document.querySelector(".slate h1");
+  if (heading) heading.textContent = "项目库";
+  var empty = document.getElementById("empty");
+  if (empty) empty.textContent = "还没有项目。跑一次制作后，会出现在这里。";
+  var live = document.getElementById("liveText");
+  if (live) live.textContent = "空闲";
+})();
+</script>
 <script type="module" src="/ui/library.js"></script>
 </body>
 </html>
